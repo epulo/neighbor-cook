@@ -30,11 +30,19 @@
         </p>
     </div>
     <div class="form-group">
-        <label class="control-label" for="inputType">Type</label>
-        <select class="form-control" id="inputType" ng-model="type">
-            <option value="request">Request</option>
-            <option value="offer">Offer</option>
-        </select>
+        <label class="control-label">Type</label><br>
+        <div class="btn-group bulletin-type">
+            <label class="btn btn-default">
+                <input type="radio" ng-model="type" value="request" bs-radio> Request
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" ng-model="type" value="offer" bs-radio> Offer
+            </label>
+        </div>
+        <!--<select class="form-control" id="inputType" ng-model="type">-->
+            <!--<option value="request">Request</option>-->
+            <!--<option value="offer">Offer</option>-->
+        <!--</select>-->
     </div>
     <!-- TODO future date validation still not 100% working -->
     <div class="form-group"

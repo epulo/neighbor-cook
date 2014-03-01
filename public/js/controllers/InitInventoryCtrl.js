@@ -35,6 +35,10 @@ var InitInventoryCtrl = function($scope, $http, $q, $location, UserService) {
     gps: ''
   };
 
+  $scope.toggleItem = function(itemID) {
+    $scope.selectedItems[itemID] = !$scope.selectedItems[itemID];
+  };
+
   $scope.initUser = function() {
     if ($scope.initForm.$invalid) return;
 
@@ -52,7 +56,7 @@ var InitInventoryCtrl = function($scope, $http, $q, $location, UserService) {
   };
 
   // TODO create geolocation service
-  $scope.getLocation = function() {
+  var getLocation = function() {
     if (navigator.geolocation) {
       $scope.gpsStatus = "Fetching GPS...";
       navigator.geolocation.getCurrentPosition(showPosition, handleError);
@@ -60,6 +64,8 @@ var InitInventoryCtrl = function($scope, $http, $q, $location, UserService) {
       console.log("Geolocation is not supported by this browser.");
     }
   };
+
+  $scope.$on('$viewContentLoaded', getLocation);
 
   var showPosition = function(position) {
     // TODO: do reverse lookup of lat/long to zipcode so this is human understandable
